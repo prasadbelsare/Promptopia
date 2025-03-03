@@ -1,40 +1,131 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
+# 📌 Promptopia
 
-## Getting Started
+🚀 **Promptopia** is an open-source AI prompting tool that allows users to **discover, create, and share creative prompts**. Built using **Next.js**, this platform provides a seamless experience for managing AI-generated content.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## 🛠️ Tech Stack
+
+- **Frontend:** Next.js, React, Tailwind CSS
+- **Backend:** Next.js API Routes, MongoDB
+- **Authentication:** NextAuth.js
+- **Database ORM:** Mongoose
+- **Deployment:** Vercel
+
+---
+
+## 🚀 Features
+
+✅ User authentication with **NextAuth.js** (Google Sign-in)\
+✅ Create, edit, and delete prompts\
+✅ Search prompts by **tag, username, or content**\
+✅ Clickable tags for instant filtering\
+✅ Responsive **MUI-based UI design**\
+✅ Deployed on **Vercel** for seamless performance
+
+---
+
+## 📂 Folder Structure
+
+```
+📦 promptopia
+├── 📂 app                 # Application source code
+├── 📂 components          # Reusable UI components
+├── 📂 models              # Mongoose schemas for database models
+├── 📂 public              # Static assets like images/icons
+├── 📂 styles              # Global styles with Tailwind CSS
+├── 📂 utils               # Helper functions
+├── 📂 node_modules        # Project dependencies
+├── .env                   # Environment variables
+├── .gitignore             # Ignored files in Git
+├── jsconfig.json          # JavaScript configuration
+├── next.config.mjs        # Next.js configuration
+├── package-lock.json      # Lockfile for dependencies
+├── package.json           # Project metadata and dependencies
+├── postcss.config.mjs     # PostCSS configuration
+├── tailwind.config.mjs    # Tailwind CSS configuration
+├── README.md              # Project documentation
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## 🔧 Installation & Setup
 
-[API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+### 1️⃣ Clone the Repository
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) instead of React pages.
+```sh
+git clone https://github.com/prasadbelsare/Promptopia.git
+cd Promptopia
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 2️⃣ Install Dependencies
 
-## Learn More
+```sh
+npm install
+```
 
-To learn more about Next.js, take a look at the following resources:
+### 3️⃣ Set Up Environment Variables
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn-pages-router) - an interactive Next.js tutorial.
+Create a `.env.local` file in the root directory and add:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```sh
+MONGODB_URI=your-mongodb-connection-string
+NEXTAUTH_SECRET=your-nextauth-secret
+NEXTAUTH_URL=http://localhost:3000
+GOOGLE_CLIENT_ID=your-google-client-id
+GOOGLE_CLIENT_SECRET=your-google-client-secret
+```
 
-## Deploy on Vercel
+### 4️⃣ Run the Development Server
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```sh
+npm run dev
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
+App will be live at **`http://localhost:3000`**.
+
+---
+
+## 🚀 Deployment
+
+This project is deployed on **Vercel**.
+
+🔗 **Live Demo:** [Promptopi](https://promptopia-rku8ogknq-prasad-belsares-projects.vercel.app/)[a ](https://promptopia-rku8ogknq-prasad-belsares-projects.vercel.app/)
+
+### Deploy to Vercel
+
+1. Install Vercel CLI:
+   ```sh
+   npm install -g vercel
+   ```
+2. Login to Vercel:
+   ```sh
+   vercel login
+   ```
+3. Deploy:
+   ```sh
+   vercel
+   ```
+
+---
+
+## 💡 Usage
+
+1. **Sign in** using Google authentication.
+2. **Create a new prompt** with a relevant tag.
+3. **Search for prompts** using the search bar.
+4. **Click a tag** to filter prompts by category.
+5. **Edit or delete your own prompts** via your profile.
+
+---
+
+## 👨‍💻 Contributors
+
+- [Prasad Belsare](https://github.com/prasadbelsare)
+
+---
+
+## 📜 License
+
+This project is open-source under the **MIT License**.
+
