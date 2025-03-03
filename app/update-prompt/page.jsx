@@ -1,35 +1,40 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { useSession } from "next-auth/react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useState, useEffect, Suspense } from "react";
+import { useRouter } from "next/navigation";
 
 import Form from "@components/Form";
+import SearchParamsWrapper from "./SearchParamsWrapper";
+
 const EditPrompt = () => {
   const router = useRouter();
-  const searchParams = useSearchParams();
-  const promptId = searchParams.get("id");
+  const [promptId, setPromptId] = useState(null);
   const [submitting, setSubmitting] = useState(false);
   const [post, setPost] = useState({ prompt: "", tag: "" });
 
   useEffect(() => {
     const getPromptDetails = async () => {
-      const response = await fetch(`/api/prompt/${promptId}`);
-      const data = await response.json();
-      setPost({
-        prompt: data.prompt,
-        tag: data.tag,
-      });
+      if (!promptId) return;
+
+      try {
+        const response = await fetch(`/api/prompt/${promptId}`);
+        const data = await response.json();
+        setPost({ prompt: data.prompt, tag: data.tag });
+      } catch (error) {
+        console.error("Error fetching prompt:", error);
+      }
     };
-    if (promptId) getPromptDetails();
+
+    getPromptDetails();
   }, [promptId]);
 
   const updatePrompt = async (e) => {
     e.preventDefault();
     setSubmitting(true);
     if (!promptId) return alert("Prompt Id not found");
+
     try {
-      const response = await fetch(`api/prompt/${promptId}`, {
+      const response = await fetch(`/api/prompt/${promptId}`, {
         method: "PATCH",
         body: JSON.stringify({
           prompt: post.prompt,
@@ -47,13 +52,19 @@ const EditPrompt = () => {
   };
 
   return (
-    <Form
-      type="Edit"
-      post={post}
-      setPost={setPost}
-      submitting={submitting}
-      handleSubmit={updatePrompt}
-    />
+    <>
+      <Suspense fallback={<div>Loading...</div>}>
+        <SearchParamsWrapper setPromptId={setPromptId} />
+      </Suspense>
+
+      <Form
+        type="Edit"
+        post={post}
+        setPost={setPost}
+        submitting={submitting}
+        handleSubmit={updatePrompt}
+      />
+    </>
   );
 };
 

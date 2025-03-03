@@ -1,6 +1,5 @@
 "use client";
 
-import { useSession } from "next-auth/react";
 import { useEffect, useState, use } from "react";
 
 import { useSearchParams } from "next/navigation";
